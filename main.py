@@ -1,8 +1,8 @@
 
 class Category:
     """Класс хранит названия категорий и список товаров категории"""
-    products_cnt: int = 0
-    categories_cnt: int = 0
+    product_count: int = 0
+    category_count: int = 0
 
     name: str
     description: str
@@ -13,8 +13,8 @@ class Category:
         self.description = description
         self.products = products
 
-        Category.products_cnt += len(self.products)
-        Category.categories_cnt += 1
+        Category.product_count += len(self.products)
+        Category.category_count += 1
 
 
 class Product:

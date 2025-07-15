@@ -18,8 +18,8 @@ def test_init_category(category_attributes):
     assert category_attributes[1].description == 'Описание категории аксессуары для электроники'
     assert category_attributes[1].products == ['Батарейки', 'Внешние аккумуляторы']
 
-    assert Category.products_cnt == len(category_attributes[0].products) + len(category_attributes[1].products)
-    assert Category.categories_cnt == 2
+    assert Category.product_count == len(category_attributes[0].products) + len(category_attributes[1].products)
+    assert Category.category_count == 2
 
 
 def test_init_product(product_attributes):
