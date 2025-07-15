@@ -1,6 +1,6 @@
-
 class Category:
     """Класс хранит названия категорий и список товаров категории"""
+
     product_count: int = 0
     category_count: int = 0
 
@@ -19,12 +19,13 @@ class Category:
 
 class Product:
     """Класс хранит информацию по товарам магазина"""
+
     name: str
     description: str
     price: int
     quantity: int
 
-    def __init__(self, name,description, price, quantity):
+    def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
         self.price = price
