@@ -6,11 +6,17 @@ from main import Category, Product
 @pytest.fixture
 def category_attributes():
     """Фикстура создаёт объекты класса Category"""
-    return Category(
+    electronics = Category(
         'Электроника',
         'Описание категории электроника',
         ['Мониторы', 'Ноутбуки', 'Компьютеры']
     )
+    electronics_accessories = Category(
+        'Аксессуары для электроники',
+        'Описание категории аксессуары для электроники',
+        ['Батарейки', 'Внешние аккумуляторы']
+    )
+    return electronics, electronics_accessories
 
 
 @pytest.fixture
