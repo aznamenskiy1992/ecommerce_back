@@ -7,11 +7,7 @@ from src.product import Product
 @pytest.fixture
 def electronic_category():
     """Фикстура создаёт категорию электроника"""
-    return Category(
-        "Электроника",
-        "Описание категории электроника",
-        ["Мониторы", "Ноутбуки", "Компьютеры"]
-    )
+    return Category("Электроника", "Описание категории электроника", ["Мониторы", "Ноутбуки", "Компьютеры"])
 
 
 @pytest.fixture
