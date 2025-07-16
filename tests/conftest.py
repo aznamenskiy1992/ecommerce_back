@@ -5,15 +5,23 @@ from src.product import Product
 
 
 @pytest.fixture
-def category_attributes():
-    """Фикстура создаёт объекты класса Category"""
-    electronics = Category("Электроника", "Описание категории электроника", ["Мониторы", "Ноутбуки", "Компьютеры"])
-    electronics_accessories = Category(
+def electronic_category():
+    """Фикстура создаёт категорию электроника"""
+    return Category(
+        "Электроника",
+        "Описание категории электроника",
+        ["Мониторы", "Ноутбуки", "Компьютеры"]
+    )
+
+
+@pytest.fixture
+def electronics_accessories_category():
+    """Фикстура создаёт категорию аксессуары для электроники"""
+    return Category(
         "Аксессуары для электроники",
         "Описание категории аксессуары для электроники",
         ["Батарейки", "Внешние аккумуляторы"],
     )
-    return electronics, electronics_accessories
 
 
 @pytest.fixture
