@@ -4,13 +4,13 @@ class Product:
     Атрибуты:
         name (str): Название товара
         description (str): Описание товара
-        price (int): Цена товара
+        price (float): Цена товара
         quantity (int): Количество товара в наличии
     """
 
     name: str
     description: str
-    price: int
+    price: float
     quantity: int
 
     def __init__(self, name, description, price, quantity):

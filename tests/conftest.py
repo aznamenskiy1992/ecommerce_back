@@ -21,6 +21,22 @@ def electronics_accessories_category():
 
 
 @pytest.fixture
-def product_attributes():
-    """Фикстура создаёт объекты класса Product"""
-    return Product("Монитор MSI PRO", "Описание товара Монитор MSI PRO", 25000, 20)
+def samsung_product():
+    """Фикстура создаёт продукт Samsung"""
+    return Product(
+        "Samsung Galaxy S23 Ultra",
+        "256GB, Серый цвет, 200MP камера",
+        180000.0,
+        5
+    )
+
+
+@pytest.fixture
+def iphone_product():
+    """Фикстура создаёт продукт Iphone"""
+    return Product(
+        "Iphone 15",
+        "512GB, Gray space",
+        210000.0,
+        8
+    )
