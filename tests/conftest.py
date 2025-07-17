@@ -5,22 +5,6 @@ from src.product import Product
 
 
 @pytest.fixture
-def electronic_category():
-    """Фикстура создаёт категорию электроника"""
-    return Category("Электроника", "Описание категории электроника", ["Мониторы", "Ноутбуки", "Компьютеры"])
-
-
-@pytest.fixture
-def electronics_accessories_category():
-    """Фикстура создаёт категорию аксессуары для электроники"""
-    return Category(
-        "Аксессуары для электроники",
-        "Описание категории аксессуары для электроники",
-        ["Батарейки", "Внешние аккумуляторы"],
-    )
-
-
-@pytest.fixture
 def samsung_product():
     """Фикстура создаёт продукт Samsung"""
     return Product(
@@ -39,4 +23,14 @@ def iphone_product():
         "512GB, Gray space",
         210000.0,
         8
+    )
+
+
+@pytest.fixture
+def smartphone_category(samsung_product, iphone_product):
+    """Фикстура создаёт категорию Смартфоны"""
+    return Category(
+        "Смартфоны",
+        "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        [samsung_product, iphone_product]
     )

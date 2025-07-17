@@ -2,6 +2,13 @@ from src.category import Category
 from src.product import Product
 
 
+def test_add_category(smartphone_category):
+    """Тестирует корректность создания новой категории"""
+    assert smartphone_category.name == "Смартфоны"
+    assert smartphone_category.description == "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
+    assert len(smartphone_category.products) == 2
+
+
 # def test_init_category(electronic_category, electronics_accessories_category):
 #     """Тестирует корректность инициализации объектов класса Category"""
 #     assert electronic_category.name == "Электроника"
