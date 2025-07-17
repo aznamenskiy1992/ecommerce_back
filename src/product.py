@@ -24,5 +24,11 @@ class Product:
         """
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
+
+
+    @property
+    def price(self):
+        """Возвращает цену товара"""
+        return self.__price
