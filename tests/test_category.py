@@ -1,4 +1,5 @@
 from src.category import Category
+from src.product import Product
 
 
 def test_init_category(electronic_category, electronics_accessories_category):
@@ -20,3 +21,14 @@ def test_len_product_in_category():
 def test_count_added_categories():
     """Тестирует подсчёт количества добавленных категорий"""
     assert Category.category_count == 2
+
+
+def test_add_product_in_category(electronic_category, product_attributes):
+    """Тестирует добавление товара в список товаров категории"""
+    electronic_category.add_product(product_attributes.name)
+    assert electronic_category.products == ["Мониторы", "Ноутбуки", "Компьютеры", "Монитор MSI PRO"]
+
+
+def test_len_product_in_category_after_add_product():
+    """Тестирует подсчёт количества продуктов в добавленных категориях после добавления товара в категорию"""
+    assert Category.product_count == 9
