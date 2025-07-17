@@ -34,9 +34,15 @@ class Category:
         """
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
 
         # Обновляем общее количество товаров
         Category.product_count += len(self.products)
         # Увеличиваем счетчик категорий
         Category.category_count += 1
+
+
+    @property
+    def products(self):
+        """Возвращает список товаров в категории"""
+        return self.__products
