@@ -45,3 +45,14 @@ def smartphone_category(samsung_product, iphone_product):
         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [samsung_product, iphone_product]
     )
+
+
+@pytest.fixture
+def samsung_product_in_dict():
+    """Фикстура возвращает словарь с товаром Samsung"""
+    return {
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 180000.0,
+         "quantity": 5
+    }

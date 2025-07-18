@@ -1,3 +1,6 @@
+from src.product import Product
+
+
 def test_init_product(samsung_product, iphone_product):
     """Тестирует корректность создания нового товара"""
     assert samsung_product.name == "Samsung Galaxy S23 Ultra"
@@ -9,3 +12,18 @@ def test_init_product(samsung_product, iphone_product):
     assert iphone_product.description == "512GB, Gray space"
     assert iphone_product.price == 210000.0
     assert iphone_product.quantity == 8
+
+
+def test_add_product_from_dict(samsung_product_in_dict):
+    """Тестирует создание товара из словаря"""
+    samsung_product_instance = Product.new_product(samsung_product_in_dict)
+
+    name = samsung_product_in_dict['name']
+    description = samsung_product_in_dict['description']
+    price = samsung_product_in_dict['price']
+    quantity = samsung_product_in_dict['quantity']
+
+    assert samsung_product_instance.name == name
+    assert samsung_product_instance.description == description
+    assert samsung_product_instance.price == price
+    assert samsung_product_instance.quantity == quantity

@@ -13,6 +13,17 @@ class Product:
     price: float
     quantity: int
 
+    @classmethod
+    def new_product(cls, product: dict):
+        """Возвращает созданный товар"""
+        return cls(
+            name=product['name'],
+            description = product['description'],
+            price = product['price'],
+            quantity = product['quantity']
+        )
+
+
     def __init__(self, name, description, price, quantity):
         """Инициализирует экземпляр класса Product.
 
