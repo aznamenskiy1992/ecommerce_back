@@ -9,6 +9,18 @@ def test_add_category(smartphone_category):
     assert len(smartphone_category.products) == 2
 
 
+def test_add_product_in_category(smartphone_category, tv_product):
+    """Тестирует добавление товара в список товаров категории"""
+    smartphone_category.add_product(tv_product)
+    assert len(smartphone_category.products) == 3
+
+    index_added_product = smartphone_category.products.index(tv_product)
+    assert smartphone_category.products[index_added_product].name == "55\" QLED 4K"
+    assert smartphone_category.products[index_added_product].description == "Фоновая подсветка"
+    assert smartphone_category.products[index_added_product].price == 123000.0
+    assert smartphone_category.products[index_added_product].quantity == 7
+
+
 # def test_init_category(electronic_category, electronics_accessories_category):
 #     """Тестирует корректность инициализации объектов класса Category"""
 #     assert electronic_category.name == "Электроника"
@@ -30,10 +42,7 @@ def test_add_category(smartphone_category):
 #     assert Category.category_count == 2
 #
 #
-# def test_add_product_in_category(electronic_category, product_attributes):
-#     """Тестирует добавление товара в список товаров категории"""
-#     electronic_category.add_product(product_attributes.name)
-#     assert electronic_category.products == ["Мониторы", "Ноутбуки", "Компьютеры", "Монитор MSI PRO"]
+
 #
 #
 # def test_len_product_in_category_after_add_product():

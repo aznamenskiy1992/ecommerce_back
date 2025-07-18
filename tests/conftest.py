@@ -27,6 +27,17 @@ def iphone_product():
 
 
 @pytest.fixture
+def tv_product():
+    """Фикстура создаёт продукт QLED TV"""
+    return Product(
+        "55\" QLED 4K",
+        "Фоновая подсветка",
+        123000.0,
+        7
+    )
+
+
+@pytest.fixture
 def smartphone_category(samsung_product, iphone_product):
     """Фикстура создаёт категорию Смартфоны"""
     return Category(
