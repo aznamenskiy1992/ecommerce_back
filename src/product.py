@@ -43,3 +43,12 @@ class Product:
     def price(self):
         """Возвращает цену товара"""
         return self.__price
+
+
+    @price.setter
+    def price(self, new_price: float):
+        """Изменяет цену товара"""
+        if new_price <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+        else:
+            self.__price = new_price

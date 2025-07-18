@@ -1,3 +1,5 @@
+import pytest
+
 from src.product import Product
 
 
@@ -27,3 +29,15 @@ def test_add_product_from_dict(samsung_product_in_dict):
     assert samsung_product_instance.description == description
     assert samsung_product_instance.price == price
     assert samsung_product_instance.quantity == quantity
+
+
+@pytest.mark.parametrize(
+    "price",
+    [-1, 0]
+)
+def test_price_less_0(capsys, price, samsung_product):
+    """Тестирует кейс, когда цена <= 0"""
+    samsung_product.price = price
+
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "Цена не должна быть нулевая или отрицательная"
