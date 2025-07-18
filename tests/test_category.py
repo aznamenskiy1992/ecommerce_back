@@ -34,3 +34,9 @@ def test_add_product_in_category(smartphone_category, tv_product):
 def test_increase_product_counter_after_add_product():
     """Тестирует увеличение счётчика продуктов при добавлении продукта в список продуктов категории"""
     assert Category.product_count == 5
+
+
+def test_print_products_in_category(capsys, smartphone_category):
+    """Тестирует вывод списка товаров из категории"""
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\nIphone 15, 210000.0 руб. Остаток: 8 шт."
