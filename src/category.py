@@ -41,13 +41,11 @@ class Category:
         # Увеличиваем счетчик категорий
         Category.category_count += 1
 
-
     def add_product(self, product: str):
         """Добавляет продукт в категорию"""
         self.__products.append(product)
 
         Category.product_count += 1
-
 
     @property
     def products(self):

@@ -20,10 +20,10 @@ def test_add_product_from_dict(samsung_product_in_dict):
     """Тестирует создание товара из словаря"""
     samsung_product_instance = Product.new_product(samsung_product_in_dict)
 
-    name = samsung_product_in_dict['name']
-    description = samsung_product_in_dict['description']
-    price = samsung_product_in_dict['price']
-    quantity = samsung_product_in_dict['quantity']
+    name = samsung_product_in_dict["name"]
+    description = samsung_product_in_dict["description"]
+    price = samsung_product_in_dict["price"]
+    quantity = samsung_product_in_dict["quantity"]
 
     assert samsung_product_instance.name == name
     assert samsung_product_instance.description == description
@@ -31,10 +31,7 @@ def test_add_product_from_dict(samsung_product_in_dict):
     assert samsung_product_instance.quantity == quantity
 
 
-@pytest.mark.parametrize(
-    "price",
-    [-1, 0]
-)
+@pytest.mark.parametrize("price", [-1, 0])
 def test_new_price_less_0(capsys, price, samsung_product):
     """Тестирует кейс, когда новая цена <= 0"""
     samsung_product.price = price

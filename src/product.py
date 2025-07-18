@@ -17,12 +17,11 @@ class Product:
     def new_product(cls, product: dict):
         """Возвращает созданный товар"""
         return cls(
-            name=product['name'],
-            description = product['description'],
-            price = product['price'],
-            quantity = product['quantity']
+            name=product["name"],
+            description=product["description"],
+            price=product["price"],
+            quantity=product["quantity"],
         )
-
 
     def __init__(self, name, description, price, quantity):
         """Инициализирует экземпляр класса Product.
@@ -38,12 +37,10 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
-
     @property
     def price(self):
         """Возвращает цену товара"""
         return self.__price
-
 
     @price.setter
     def price(self, new_price: float):
