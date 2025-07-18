@@ -9,6 +9,11 @@ def test_add_category(smartphone_category):
     assert len(smartphone_category.products) == 2
 
 
+def test_count_added_categories():
+    """Тестирует подсчёт количества добавленных категорий"""
+    assert Category.category_count == 1
+
+
 def test_len_product_in_category():
     """Тестирует подсчёт количества продуктов в добавленных категориях"""
     assert Category.product_count == 2
@@ -30,9 +35,6 @@ def test_add_product_in_category(smartphone_category, tv_product):
 #
 #
 #
-# def test_count_added_categories():
-#     """Тестирует подсчёт количества добавленных категорий"""
-#     assert Category.category_count == 2
 #
 #
 
