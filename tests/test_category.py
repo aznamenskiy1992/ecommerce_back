@@ -31,15 +31,6 @@ def test_add_product_in_category(smartphone_category, tv_product):
     assert smartphone_category.products[index_added_product].quantity == 7
 
 
-#
-#
-#
-#
-#
-#
-
-#
-#
-# def test_len_product_in_category_after_add_product():
-#     """Тестирует подсчёт количества продуктов в добавленных категориях после добавления товара в категорию"""
-#     assert Category.product_count == 9
+def test_increase_product_counter_after_add_product():
+    """Тестирует увеличение счётчика продуктов при добавлении продукта в список продуктов категории"""
+    assert Category.product_count == 5
