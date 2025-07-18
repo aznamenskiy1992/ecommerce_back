@@ -35,9 +35,19 @@ def test_add_product_from_dict(samsung_product_in_dict):
     "price",
     [-1, 0]
 )
-def test_price_less_0(capsys, price, samsung_product):
-    """Тестирует кейс, когда цена <= 0"""
+def test_new_price_less_0(capsys, price, samsung_product):
+    """Тестирует кейс, когда новая цена <= 0"""
     samsung_product.price = price
 
     captured = capsys.readouterr()
     assert captured.out.strip() == "Цена не должна быть нулевая или отрицательная"
+
+
+def test_new_price_more_0(capsys, samsung_product):
+    """Тестирует кейс, когда новая цена > 0"""
+    samsung_product.price = 25000.99
+
+    captured = capsys.readouterr()
+    assert "Цена не должна быть нулевая или отрицательная" not in captured.out.strip()
+
+    assert samsung_product.price == 25000.99
