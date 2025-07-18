@@ -58,6 +58,4 @@ class Category:
         for i in range(len(attribute)):
             products_str += f"{attribute[i].name}, {attribute[i].price} руб. Остаток: {attribute[i].quantity} шт.\n"
 
-        print(products_str)
-
-        return attribute
+        return products_str
