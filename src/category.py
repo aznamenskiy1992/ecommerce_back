@@ -52,10 +52,12 @@ class Category:
     @property
     def products(self):
         """Возвращает список товаров в категории"""
+        attribute = self.__products
+
         products_str: str = ""
-        for i in range(len(self.__products)):
-            products_str += f"{self.__products[i].name}, {self.__products[i].price} руб. Остаток: {self.__products[i].quantity} шт.\n"
+        for i in range(len(attribute)):
+            products_str += f"{attribute[i].name}, {attribute[i].price} руб. Остаток: {attribute[i].quantity} шт.\n"
 
         print(products_str)
 
-        return self.__products
+        return attribute
