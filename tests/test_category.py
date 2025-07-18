@@ -9,6 +9,11 @@ def test_add_category(smartphone_category):
     assert len(smartphone_category.products) == 2
 
 
+def test_len_product_in_category():
+    """Тестирует подсчёт количества продуктов в добавленных категориях"""
+    assert Category.product_count == 2
+
+
 def test_add_product_in_category(smartphone_category, tv_product):
     """Тестирует добавление товара в список товаров категории"""
     smartphone_category.add_product(tv_product)
@@ -21,20 +26,8 @@ def test_add_product_in_category(smartphone_category, tv_product):
     assert smartphone_category.products[index_added_product].quantity == 7
 
 
-# def test_init_category(electronic_category, electronics_accessories_category):
-#     """Тестирует корректность инициализации объектов класса Category"""
-#     assert electronic_category.name == "Электроника"
-#     assert electronic_category.description == "Описание категории электроника"
-#     assert electronic_category.products == ["Мониторы", "Ноутбуки", "Компьютеры"]
-#
-#     assert electronics_accessories_category.name == "Аксессуары для электроники"
-#     assert electronics_accessories_category.description == "Описание категории аксессуары для электроники"
-#     assert electronics_accessories_category.products == ["Батарейки", "Внешние аккумуляторы"]
 #
 #
-# def test_len_product_in_category():
-#     """Тестирует подсчёт количества продуктов в добавленных категориях"""
-#     assert Category.product_count == 5
 #
 #
 # def test_count_added_categories():
