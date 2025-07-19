@@ -1,3 +1,6 @@
+from src.product import Product
+
+
 class Category:
     """Класс для представления категории товаров в магазине.
 
@@ -52,7 +55,11 @@ class Category:
         Примечание:
             После добавления товара увеличивает статический счетчик product_count на 1
         """
-        self.__products.append(product)
+        if not isinstance(product, Product):
+            raise TypeError("Можно добавлять только объекты класса Product или его наследников")
+        else:
+            self.__products.append(product)
+
         # Увеличиваем общий счетчик товаров
         Category.product_count += 1
 
