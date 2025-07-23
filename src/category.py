@@ -80,3 +80,16 @@ class Category:
             products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
 
         return products_str
+
+
+    def __str__(self):
+        """ Вывод информацию об остатках на складе товаров из категории """
+        # Создаём счётчик общего кол-ва остатка товаров на складе
+        sum_quantity = 0
+
+        # Перебираем товары и добавляем остатки в счётчик
+        attribute = self.__products
+        for product in attribute:
+            sum_quantity += product.quantity
+
+        return f'{self.name}, количество продуктов: {sum_quantity} шт.'
