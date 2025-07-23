@@ -58,6 +58,31 @@ class Product:
         self.__price = price  # Устанавливаем через приватный атрибут
         self.quantity = quantity
 
+    def __str__(self):
+        """Возвращает строковое представление товара.
+
+        Returns:
+            str: Строка в формате "Название, цена руб. Остаток: кол-во шт."
+        """
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        """Складывает стоимость товаров (цена * количество).
+
+        Args:
+            other (Product): Другой товар для сложения
+
+        Returns:
+            float: Общая стоимость товаров
+
+        Исключения:
+            TypeError: Если other не является Product
+        """
+        if isinstance(other, Product):
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError("Можно суммировать только объекты класса Product или его наследников")
+
     @property
     def price(self):
         """Геттер для получения цены товара.
