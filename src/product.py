@@ -81,7 +81,7 @@ class Product:
         if isinstance(other, Product):
             return self.__price * self.quantity + other.__price * other.quantity
         else:
-            raise TypeError('Можно суммировать только объекты класса Product или его наследников')
+            raise TypeError("Можно суммировать только объекты класса Product или его наследников")
 
     @property
     def price(self):
