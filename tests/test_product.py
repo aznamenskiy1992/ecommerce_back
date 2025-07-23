@@ -1,5 +1,3 @@
-from idlelib.run import capture_warnings
-
 import pytest
 
 from src.product import Product
@@ -53,24 +51,24 @@ def test_new_price_more_0(capsys, samsung_product):
 
 
 def test_print_products_info(samsung_product, iphone_product, capsys):
-    """ Тестирует вывод информации о продукте """
+    """Тестирует вывод информации о продукте"""
 
     print(str(samsung_product))
-    print(str(iphone_product), end='')
+    print(str(iphone_product), end="")
 
     captured = capsys.readouterr()
-    captured_out = captured.out.split('\n')
+    captured_out = captured.out.split("\n")
 
     product_1 = captured_out[0]
     product_2 = captured_out[1]
 
-    assert product_1 == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
-    assert product_2 == 'Iphone 15, 210000.0 руб. Остаток: 8 шт.'
+    assert product_1 == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+    assert product_2 == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
 
 
 def test_sum_products(samsung_product, iphone_product, capsys):
-    """ Тестирует вывод суммы товаров """
-    print(samsung_product + iphone_product, end='')
+    """Тестирует вывод суммы товаров"""
+    print(samsung_product + iphone_product, end="")
 
     captured = capsys.readouterr()
 

@@ -81,9 +81,8 @@ class Category:
 
         return products_str
 
-
     def __str__(self):
-        """ Вывод информацию об остатках на складе товаров из категории """
+        """Вывод информацию об остатках на складе товаров из категории"""
         # Создаём счётчик общего кол-ва остатка товаров на складе
         sum_quantity = 0
 
@@ -92,4 +91,4 @@ class Category:
         for product in attribute:
             sum_quantity += product.quantity
 
-        return f'{self.name}, количество продуктов: {sum_quantity} шт.'
+        return f"{self.name}, количество продуктов: {sum_quantity} шт."
