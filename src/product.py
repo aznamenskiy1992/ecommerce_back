@@ -58,6 +58,14 @@ class Product:
         self.__price = price  # Устанавливаем через приватный атрибут
         self.quantity = quantity
 
+    def __str__(self):
+        """ Выводит информацию о товаре """
+        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
+
+    def __add__(self, other):
+        """ Выводит сумму по стоимости 2-х товаров """
+        return self.__price * self.quantity + other.__price * other.quantity
+
     @property
     def price(self):
         """Геттер для получения цены товара.
@@ -83,8 +91,3 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = new_price
-
-
-    def __str__(self):
-        """ Выводит информацию о товаре """
-        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'

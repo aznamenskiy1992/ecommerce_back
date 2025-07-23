@@ -1,3 +1,5 @@
+from idlelib.run import capture_warnings
+
 import pytest
 
 from src.product import Product
@@ -64,3 +66,14 @@ def test_print_products_info(samsung_product, iphone_product, capsys):
 
     assert product_1 == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
     assert product_2 == 'Iphone 15, 210000.0 руб. Остаток: 8 шт.'
+
+
+def test_sum_products(samsung_product, iphone_product, capsys):
+    """ Тестирует вывод суммы товаров """
+    print(samsung_product + iphone_product, end='')
+
+    captured = capsys.readouterr()
+
+    expected_result = samsung_product.price * samsung_product.quantity + iphone_product.price * iphone_product.quantity
+
+    assert captured.out == str(expected_result)
