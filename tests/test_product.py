@@ -75,3 +75,11 @@ def test_sum_products(samsung_product, iphone_product, capsys):
     expected_result = samsung_product.price * samsung_product.quantity + iphone_product.price * iphone_product.quantity
 
     assert captured.out == str(expected_result)
+
+
+def test_other_is_not_product_object(samsung_product):
+    """ Тестирует кейс, когда 2-ой аргумент для суммы не экземпляр класса Product """
+    with pytest.raises(TypeError) as exc_info:
+        print(samsung_product + 25000)
+    assert str(exc_info.value) == "Можно суммировать только объекты класса Product или его наследников"
+

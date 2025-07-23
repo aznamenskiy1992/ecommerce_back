@@ -78,7 +78,10 @@ class Product:
         Исключения:
             TypeError: Если other не является Product
         """
-        return self.__price * self.quantity + other.__price * other.quantity
+        if isinstance(other, Product):
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError('Можно суммировать только объекты класса Product или его наследников')
 
     @property
     def price(self):
