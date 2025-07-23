@@ -46,6 +46,24 @@ class Category:
         # Увеличиваем счетчик категорий
         Category.category_count += 1
 
+    def __str__(self):
+        """Возвращает строку с информацией об остатках товаров категории.
+
+        Returns:
+            str: Строка в формате "Название, количество продуктов: X шт."
+                 где X - суммарное количество всех товаров категории
+
+        Пример:
+            print(category) -> "Электроника, количество продуктов: 15 шт."
+        """
+        sum_quantity = 0  # Счетчик общего количества товаров
+
+        # Суммируем количество каждого товара в категории
+        for product in self.__products:
+            sum_quantity += product.quantity
+
+        return f"{self.name}, количество продуктов: {sum_quantity} шт."
+
     def add_product(self, product: str):
         """Добавляет новый товар в категорию и обновляет общий счетчик товаров.
 
@@ -80,15 +98,3 @@ class Category:
             products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
 
         return products_str
-
-    def __str__(self):
-        """Вывод информацию об остатках на складе товаров из категории"""
-        # Создаём счётчик общего кол-ва остатка товаров на складе
-        sum_quantity = 0
-
-        # Перебираем товары и добавляем остатки в счётчик
-        attribute = self.__products
-        for product in attribute:
-            sum_quantity += product.quantity
-
-        return f"{self.name}, количество продуктов: {sum_quantity} шт."

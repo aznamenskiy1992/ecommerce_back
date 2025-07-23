@@ -59,11 +59,25 @@ class Product:
         self.quantity = quantity
 
     def __str__(self):
-        """Выводит информацию о товаре"""
+        """Возвращает строковое представление товара.
+
+        Returns:
+            str: Строка в формате "Название, цена руб. Остаток: кол-во шт."
+        """
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        """Выводит сумму по стоимости 2-х товаров"""
+        """Складывает стоимость товаров (цена * количество).
+
+        Args:
+            other (Product): Другой товар для сложения
+
+        Returns:
+            float: Общая стоимость товаров
+
+        Исключения:
+            TypeError: Если other не является Product
+        """
         return self.__price * self.quantity + other.__price * other.quantity
 
     @property
