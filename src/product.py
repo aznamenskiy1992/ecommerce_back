@@ -111,23 +111,64 @@ class Product:
 
 
 class Smartphone(Product):
-    """Класс для товара Смартфоны"""
+    """Класс для представления смартфонов в магазине.
 
-    efficiency: float
-    model: str
-    memory: int
-    color: str
+    Наследует базовый функционал класса Product и добавляет специфичные для смартфонов атрибуты.
+
+    Атрибуты:
+        efficiency (float): Производительность (например, в GHz)
+        model (str): Модель смартфона
+        memory (int): Объем памяти в GB
+        color (str): Цвет устройства
+        Все атрибуты родительского класса Product
+
+    Методы:
+        __init__: Инициализирует экземпляр смартфона
+        __add__: Складывает стоимость товаров с проверкой типа
+    """
+
+    efficiency: float  # Производительность процессора
+    model: str  # Модельный номер устройства
+    memory: int  # Объем памяти в гигабайтах
+    color: str  # Цвет корпуса
 
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
-        """Инициализирует подкласс Smartphone"""
+        """Инициализирует новый экземпляр смартфона.
+
+        Args:
+            name (str): Название модели
+            description (str): Описание характеристик
+            price (float): Цена в рублях
+            quantity (int): Количество на складе
+            efficiency (float): Производительность процессора
+            model (str): Модельный номер
+            memory (int): Объем памяти (GB)
+            color (str): Цвет устройства
+
+        Примечание:
+            Первые 4 параметра передаются в родительский класс Product
+        """
         super().__init__(name, description, price, quantity)
-        self.efficiency = efficiency
+        self.efficiency = efficiency  # Устанавливаем специфичные для смартфона параметры
         self.model = model
         self.memory = memory
         self.color = color
 
     def __add__(self, other):
-        """Складывает стоимость товаров (цена * количество)"""
+        """Складывает общую стоимость (цена × количество) двух смартфонов.
+
+        Args:
+            other (Smartphone): Другой смартфон для сложения
+
+        Returns:
+            float: Суммарная стоимость товаров
+
+        Raises:
+            TypeError: Если other не является объектом Smartphone
+
+        Примечание:
+            Защищает от сложения с объектами других классов
+        """
         if type(other) is self.__class__:
             return self.price * self.quantity + other.price * other.quantity
 
@@ -135,21 +176,64 @@ class Smartphone(Product):
 
 
 class LawnGrass(Product):
-    """Класс для товара Трава газонная"""
+    """Класс для представления газонной травы в магазине.
 
-    country: str
-    germination_period: str
-    color: str
+    Наследует базовый функционал класса Product и добавляет специфичные атрибуты
+    для газонной травы.
+
+    Атрибуты:
+        country (str): Страна-производитель травы
+        germination_period (str): Период прорастания (например, '2-3 недели')
+        color (str): Цвет травы (например, 'ярко-зеленый')
+        Все атрибуты родительского класса Product
+
+    Методы:
+        __init__: Инициализирует экземпляр газонной травы
+        __add__: Складывает стоимость товаров с проверкой типа
+    """
+
+    country: str  # Страна происхождения травосмеси
+    germination_period: str  # Срок прорастания в днях/неделях
+    color: str  # Оттенок зелени
 
     def __init__(self, name, description, price, quantity, country, germination_period, color):
-        """Инициализирует подкласс LawnGrass"""
+        """Инициализирует новый экземпляр газонной травы.
+
+        Args:
+            name (str): Название травосмеси
+            description (str): Описание состава и характеристик
+            price (float): Цена за упаковку в рублях
+            quantity (int): Количество упаковок на складе
+            country (str): Страна производства (например, 'Германия')
+            germination_period (str): Срок прорастания (например, '14-21 день')
+            color (str): Цвет травы (например, 'изумрудный')
+
+        Примечание:
+            Первые 4 параметра передаются в родительский класс Product
+        """
         super().__init__(name, description, price, quantity)
-        self.country = country
-        self.germination_period = germination_period
-        self.color = color
+        self.country = country  # Устанавливаем страну-производителя
+        self.germination_period = germination_period  # Срок до первых всходов
+        self.color = color  # Цвет травяного покрова
 
     def __add__(self, other):
-        """Складывает стоимость товаров (цена * количество)"""
+        """Складывает общую стоимость (цена × количество) двух упаковок травы.
+
+        Args:
+            other (LawnGrass): Другая упаковка газонной травы для сложения
+
+        Returns:
+            float: Суммарная стоимость товаров
+
+        Raises:
+            TypeError: Если other не является объектом LawnGrass
+
+        Пример:
+            grass1 + grass2  # Сумма стоимости двух упаковок травы
+
+        Примечание:
+            Защищает от сложения с объектами других классов товаров
+        """
         if type(other) is self.__class__:
             return self.price * self.quantity + other.price * other.quantity
 
