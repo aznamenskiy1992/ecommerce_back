@@ -48,3 +48,37 @@ def test_new_price_more_0(capsys, samsung_product):
     assert "Цена не должна быть нулевая или отрицательная" not in captured.out.strip()
 
     assert samsung_product.price == 25000.99
+
+
+def test_print_products_info(samsung_product, iphone_product, capsys):
+    """Тестирует вывод информации о продукте"""
+
+    print(str(samsung_product))
+    print(str(iphone_product), end="")
+
+    captured = capsys.readouterr()
+    captured_out = captured.out.split("\n")
+
+    product_1 = captured_out[0]
+    product_2 = captured_out[1]
+
+    assert product_1 == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+    assert product_2 == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
+
+
+def test_sum_products(samsung_product, iphone_product, capsys):
+    """Тестирует вывод суммы товаров"""
+    print(samsung_product + iphone_product, end="")
+
+    captured = capsys.readouterr()
+
+    expected_result = samsung_product.price * samsung_product.quantity + iphone_product.price * iphone_product.quantity
+
+    assert captured.out == str(expected_result)
+
+
+def test_other_is_not_product_object(samsung_product):
+    """Тестирует кейс, когда 2-ой аргумент для суммы не экземпляр класса Product"""
+    with pytest.raises(TypeError) as exc_info:
+        print(samsung_product + 25000)
+    assert str(exc_info.value) == "Можно суммировать только объекты класса Product или его наследников"
