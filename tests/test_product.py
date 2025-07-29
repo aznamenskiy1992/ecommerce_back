@@ -1,6 +1,6 @@
 import pytest
 
-from src.product import Product
+from src.product import Product, Smartphone
 
 
 def test_init_product(samsung_product, iphone_product):
@@ -82,3 +82,15 @@ def test_other_is_not_product_object(samsung_product):
     with pytest.raises(TypeError) as exc_info:
         print(samsung_product + 25000)
     assert str(exc_info.value) == "Можно суммировать только объекты класса Product или его наследников"
+
+
+def test_init_smartphone_class(smartphone_product):
+    """ Тестирует создание товара Смартфон """
+    assert smartphone_product.name == 'Samsung Galaxy S23 Ultra'
+    assert smartphone_product.description == '256GB, Серый цвет, 200MP камера'
+    assert smartphone_product.price == 180000.0
+    assert smartphone_product.quantity == 5
+    assert smartphone_product.efficiency == 95.5
+    assert smartphone_product.model == 'S23 Ultra'
+    assert smartphone_product.memory == 256
+    assert smartphone_product.color == 'Серый'
