@@ -128,3 +128,8 @@ def test_error_for_add_smartphone_and_lawn_grass(smartphone_product, lawn_grass_
     with pytest.raises(TypeError) as exc_info:
         print(smartphone_product + lawn_grass_product)
     assert str(exc_info.value) == 'Складывать можно только товары одного класса'
+
+
+def test_add_lawn_grass(lawn_grass_product, lawn_grass_product_2):
+    """ Тестирует сложение стоимости товаров Smartphone """
+    assert lawn_grass_product + lawn_grass_product_2 == lawn_grass_product.price * lawn_grass_product.quantity + lawn_grass_product_2.price * lawn_grass_product_2.quantity
