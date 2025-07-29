@@ -121,3 +121,10 @@ def test_lawn_grass_isinstance_product(lawn_grass_product):
 def test_add_smartphones(smartphone_product, smartphone_product_2):
     """ Тестирует сложение стоимости товаров Smartphone """
     assert smartphone_product + smartphone_product_2 == smartphone_product.price * smartphone_product.quantity + smartphone_product_2.price * smartphone_product_2.quantity
+
+
+def test_error_for_add_smartphone_and_lawn_grass(smartphone_product, lawn_grass_product):
+    """ Тестирует исключение при сложении объектов разных классов """
+    with pytest.raises(TypeError) as exc_info:
+        print(smartphone_product + lawn_grass_product)
+    assert str(exc_info.value) == 'Складывать можно только товары одного класса'

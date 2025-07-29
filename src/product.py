@@ -125,6 +125,13 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
+    def __add__(self, other):
+        """ Складывает стоимость товаров (цена * количество) """
+        if type(other) == self.__class__:
+            return self.price * self.quantity + other.price * other.quantity
+
+        raise TypeError('Складывать можно только товары одного класса')
+
 
 class LawnGrass(Product):
     """ Класс для товара Трава газонная """
