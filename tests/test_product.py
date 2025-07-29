@@ -116,3 +116,8 @@ def test_init_lawn_grass_class(lawn_grass_product):
 def test_lawn_grass_isinstance_product(lawn_grass_product):
     """ Проверяет, является ли класс LawnGrass подклассом Product """
     assert isinstance(lawn_grass_product, Product)
+
+
+def test_add_smartphones(smartphone_product, smartphone_product_2):
+    """ Тестирует сложение стоимости товаров Smartphone """
+    assert smartphone_product + smartphone_product_2 == smartphone_product.price * smartphone_product.quantity + smartphone_product_2.price * smartphone_product_2.quantity

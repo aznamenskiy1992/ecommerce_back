@@ -59,6 +59,21 @@ def smartphone_product():
 
 
 @pytest.fixture
+def smartphone_product_2():
+    """ Фикстура создаёт продукт Смартфон """
+    return Smartphone(
+        "Iphone 15",
+        "512GB, Gray space",
+        210000.0,
+        8,
+        98.2,
+        "15",
+        512,
+        "Gray space"
+    )
+
+
+@pytest.fixture
 def lawn_grass_product():
     """ Фикстура создаёт продукт Трава газонная """
     return LawnGrass(
