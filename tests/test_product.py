@@ -1,7 +1,7 @@
 import pytest
 
 from src.category import Category
-from src.product import Product, Smartphone
+from src.product import Product, Smartphone, LawnGrass
 
 
 def test_init_product(samsung_product, iphone_product):
@@ -100,3 +100,14 @@ def test_init_smartphone_class(smartphone_product):
 def test_smartphone_isinstance_product(smartphone_product):
     """ Проверяет, является ли класс Smartphone подклассом Product """
     assert isinstance(smartphone_product, Product)
+
+
+def test_init_lawn_grass_class(lawn_grass_product):
+    """ Тестирует создание товара Трава газонная """
+    assert lawn_grass_product.name == 'Газонная трава'
+    assert lawn_grass_product.description == 'Элитная трава для газона'
+    assert lawn_grass_product.price == 500.0
+    assert lawn_grass_product.quantity == 20
+    assert lawn_grass_product.country == 'Россия'
+    assert lawn_grass_product.germination_period == '7 дней'
+    assert lawn_grass_product.color == 'Зеленый'

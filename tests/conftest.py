@@ -1,7 +1,7 @@
 import pytest
 
 from src.category import Category
-from src.product import Product, Smartphone
+from src.product import Product, Smartphone, LawnGrass
 
 
 @pytest.fixture
@@ -55,4 +55,18 @@ def smartphone_product():
         "S23 Ultra",
         256,
         "Серый"
+    )
+
+
+@pytest.fixture
+def lawn_grass_product():
+    """ Фикстура создаёт продукт Трава газонная """
+    return LawnGrass(
+        "Газонная трава",
+        "Элитная трава для газона",
+        500.0,
+        20,
+        "Россия",
+        "7 дней",
+        "Зеленый"
     )
