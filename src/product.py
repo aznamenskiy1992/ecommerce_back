@@ -111,14 +111,15 @@ class Product:
 
 
 class Smartphone(Product):
-    """ Класс для товара Смартфоны """
+    """Класс для товара Смартфоны"""
+
     efficiency: float
     model: str
     memory: int
     color: str
 
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
-        """ Инициализирует подкласс Smartphone """
+        """Инициализирует подкласс Smartphone"""
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
@@ -126,29 +127,30 @@ class Smartphone(Product):
         self.color = color
 
     def __add__(self, other):
-        """ Складывает стоимость товаров (цена * количество) """
-        if type(other) == self.__class__:
+        """Складывает стоимость товаров (цена * количество)"""
+        if type(other) is self.__class__:
             return self.price * self.quantity + other.price * other.quantity
 
-        raise TypeError('Складывать можно только товары одного класса')
+        raise TypeError("Складывать можно только товары одного класса")
 
 
 class LawnGrass(Product):
-    """ Класс для товара Трава газонная """
+    """Класс для товара Трава газонная"""
+
     country: str
     germination_period: str
     color: str
 
     def __init__(self, name, description, price, quantity, country, germination_period, color):
-        """ Инициализирует подкласс LawnGrass """
+        """Инициализирует подкласс LawnGrass"""
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
         self.color = color
 
     def __add__(self, other):
-        """ Складывает стоимость товаров (цена * количество) """
-        if type(other) == self.__class__:
+        """Складывает стоимость товаров (цена * количество)"""
+        if type(other) is self.__class__:
             return self.price * self.quantity + other.price * other.quantity
 
-        raise TypeError('Складывать можно только товары одного класса')
+        raise TypeError("Складывать можно только товары одного класса")

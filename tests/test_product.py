@@ -1,7 +1,6 @@
 import pytest
 
-from src.category import Category
-from src.product import Product, Smartphone, LawnGrass
+from src.product import Product
 
 
 def test_init_product(samsung_product, iphone_product):
@@ -86,50 +85,58 @@ def test_other_is_not_product_object(samsung_product):
 
 
 def test_init_smartphone_class(smartphone_product):
-    """ Тестирует создание товара Смартфон """
-    assert smartphone_product.name == 'Samsung Galaxy S23 Ultra'
-    assert smartphone_product.description == '256GB, Серый цвет, 200MP камера'
+    """Тестирует создание товара Смартфон"""
+    assert smartphone_product.name == "Samsung Galaxy S23 Ultra"
+    assert smartphone_product.description == "256GB, Серый цвет, 200MP камера"
     assert smartphone_product.price == 180000.0
     assert smartphone_product.quantity == 5
     assert smartphone_product.efficiency == 95.5
-    assert smartphone_product.model == 'S23 Ultra'
+    assert smartphone_product.model == "S23 Ultra"
     assert smartphone_product.memory == 256
-    assert smartphone_product.color == 'Серый'
+    assert smartphone_product.color == "Серый"
 
 
 def test_smartphone_isinstance_product(smartphone_product):
-    """ Проверяет, является ли класс Smartphone подклассом Product """
+    """Проверяет, является ли класс Smartphone подклассом Product"""
     assert isinstance(smartphone_product, Product)
 
 
 def test_init_lawn_grass_class(lawn_grass_product):
-    """ Тестирует создание товара Трава газонная """
-    assert lawn_grass_product.name == 'Газонная трава'
-    assert lawn_grass_product.description == 'Элитная трава для газона'
+    """Тестирует создание товара Трава газонная"""
+    assert lawn_grass_product.name == "Газонная трава"
+    assert lawn_grass_product.description == "Элитная трава для газона"
     assert lawn_grass_product.price == 500.0
     assert lawn_grass_product.quantity == 20
-    assert lawn_grass_product.country == 'Россия'
-    assert lawn_grass_product.germination_period == '7 дней'
-    assert lawn_grass_product.color == 'Зеленый'
+    assert lawn_grass_product.country == "Россия"
+    assert lawn_grass_product.germination_period == "7 дней"
+    assert lawn_grass_product.color == "Зеленый"
 
 
 def test_lawn_grass_isinstance_product(lawn_grass_product):
-    """ Проверяет, является ли класс LawnGrass подклассом Product """
+    """Проверяет, является ли класс LawnGrass подклассом Product"""
     assert isinstance(lawn_grass_product, Product)
 
 
 def test_add_smartphones(smartphone_product, smartphone_product_2):
-    """ Тестирует сложение стоимости товаров Smartphone """
-    assert smartphone_product + smartphone_product_2 == smartphone_product.price * smartphone_product.quantity + smartphone_product_2.price * smartphone_product_2.quantity
+    """Тестирует сложение стоимости товаров Smartphone"""
+    assert (
+        smartphone_product + smartphone_product_2
+        == smartphone_product.price * smartphone_product.quantity
+        + smartphone_product_2.price * smartphone_product_2.quantity
+    )
 
 
 def test_error_for_add_smartphone_and_lawn_grass(smartphone_product, lawn_grass_product):
-    """ Тестирует исключение при сложении объектов разных классов """
+    """Тестирует исключение при сложении объектов разных классов"""
     with pytest.raises(TypeError) as exc_info:
         print(smartphone_product + lawn_grass_product)
-    assert str(exc_info.value) == 'Складывать можно только товары одного класса'
+    assert str(exc_info.value) == "Складывать можно только товары одного класса"
 
 
 def test_add_lawn_grass(lawn_grass_product, lawn_grass_product_2):
-    """ Тестирует сложение стоимости товаров Smartphone """
-    assert lawn_grass_product + lawn_grass_product_2 == lawn_grass_product.price * lawn_grass_product.quantity + lawn_grass_product_2.price * lawn_grass_product_2.quantity
+    """Тестирует сложение стоимости товаров Smartphone"""
+    assert (
+        lawn_grass_product + lawn_grass_product_2
+        == lawn_grass_product.price * lawn_grass_product.quantity
+        + lawn_grass_product_2.price * lawn_grass_product_2.quantity
+    )
