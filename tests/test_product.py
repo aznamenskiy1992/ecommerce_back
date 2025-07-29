@@ -111,3 +111,8 @@ def test_init_lawn_grass_class(lawn_grass_product):
     assert lawn_grass_product.country == 'Россия'
     assert lawn_grass_product.germination_period == '7 дней'
     assert lawn_grass_product.color == 'Зеленый'
+
+
+def test_lawn_grass_isinstance_product(lawn_grass_product):
+    """ Проверяет, является ли класс LawnGrass подклассом Product """
+    assert isinstance(lawn_grass_product, Product)
