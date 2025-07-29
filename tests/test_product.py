@@ -1,5 +1,6 @@
 import pytest
 
+from src.category import Category
 from src.product import Product, Smartphone
 
 
@@ -94,3 +95,8 @@ def test_init_smartphone_class(smartphone_product):
     assert smartphone_product.model == 'S23 Ultra'
     assert smartphone_product.memory == 256
     assert smartphone_product.color == 'Серый'
+
+
+def test_smartphone_isinstance_product(smartphone_product):
+    """ Проверяет, является ли класс Smartphone подклассом Product """
+    assert isinstance(smartphone_product, Product)
