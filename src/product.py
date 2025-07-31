@@ -1,4 +1,21 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class BaseProduct:
+    """ Абстрактный класс для товаров """
+
+    @abstractmethod
+    def __init__(self):
+        """ Инициализирует экземпляр класса """
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        """ Складывает стоимость товаров (цена * количество) """
+        pass
+
+
+class Product(BaseProduct):
     """Класс для представления товара в магазине.
 
     Атрибуты:
