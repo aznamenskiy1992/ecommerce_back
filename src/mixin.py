@@ -33,6 +33,4 @@ class MixinLog:
         Пример:
             "Smartphone (iPhone 13, Смартфон, 79990, 5)"
         """
-        return (f'{self.__class__.__name__} '
-                f'({self.name}, {self.description}, '
-                f'{self.price}, {self.quantity})')
+        return f"{self.__class__.__name__} " f"({self.name}, {self.description}, " f"{self.price}, {self.quantity})"

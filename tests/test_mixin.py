@@ -14,4 +14,4 @@ def test_print_object_info(capsys):
     price = 180000.0
     quantity = 5
 
-    assert captured.out.strip() == f'Smartphone ({name}, {description}, {price}, {quantity})'
+    assert captured.out.strip() == f"Smartphone ({name}, {description}, {price}, {quantity})"
