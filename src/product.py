@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from src.mixin import MixinLog
 
 
-class BaseProduct:
+class BaseProduct(ABC):
     """ Абстрактный класс для товаров """
 
     @abstractmethod
