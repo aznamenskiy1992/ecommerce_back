@@ -1,21 +1,33 @@
 from abc import ABC, abstractmethod
+from src.mixin import MixinLog
 
 
 class BaseProduct:
     """ Абстрактный класс для товаров """
 
     @abstractmethod
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """ Инициализирует экземпляр класса """
         pass
 
     @abstractmethod
-    def __add__(self, other):
+    def __str__(self):
+        """ Возвращает строковое представление товара """
+        pass
+
+    @abstractmethod
+    def __add__(self, *args, **kwargs):
         """ Складывает стоимость товаров (цена * количество) """
         pass
 
+    @classmethod
+    @abstractmethod
+    def new_product(cls, *args, **kwargs):
+        """ Фабричный метод для создания нового товара из словаря """
+        pass
 
-class Product(BaseProduct):
+
+class Product(MixinLog, BaseProduct):
     """Класс для представления товара в магазине.
 
     Атрибуты:
@@ -74,6 +86,7 @@ class Product(BaseProduct):
         self.description = description
         self.__price = price  # Устанавливаем через приватный атрибут
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self):
         """Возвращает строковое представление товара.

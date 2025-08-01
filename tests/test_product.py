@@ -37,7 +37,7 @@ def test_new_price_less_0(capsys, price, samsung_product):
     samsung_product.price = price
 
     captured = capsys.readouterr()
-    assert captured.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert captured.out.strip().split('\n')[-1] == "Цена не должна быть нулевая или отрицательная"
 
 
 def test_new_price_more_0(capsys, samsung_product):
