@@ -158,7 +158,7 @@ class Product(MixinLog, BaseProduct):
         Исключения:
             TypeError: Если other не является Product
         """
-        if type(other) == self.__class__:
+        if type(other) is self.__class__:
             return self.__price * self.quantity + other.__price * other.quantity
 
         raise TypeError("Складывать можно только товары одного класса")
