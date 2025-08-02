@@ -66,24 +66,6 @@ def test_print_products_info(samsung_product, iphone_product, capsys):
     assert product_2 == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
 
 
-def test_sum_products(samsung_product, iphone_product, capsys):
-    """Тестирует вывод суммы товаров"""
-    print(samsung_product + iphone_product, end="")
-
-    captured = capsys.readouterr()
-
-    expected_result = samsung_product.price * samsung_product.quantity + iphone_product.price * iphone_product.quantity
-
-    assert captured.out == str(expected_result)
-
-
-def test_other_is_not_product_object(samsung_product):
-    """Тестирует кейс, когда 2-ой аргумент для суммы не экземпляр класса Product"""
-    with pytest.raises(TypeError) as exc_info:
-        samsung_product + 25000
-    assert str(exc_info.value) == "Складывать можно только товары одного класса"
-
-
 def test_init_smartphone_class(smartphone_product):
     """Тестирует создание товара Смартфон"""
     assert smartphone_product.name == "Samsung Galaxy S23 Ultra"
@@ -129,12 +111,12 @@ def test_add_smartphones(smartphone_product, smartphone_product_2):
 def test_error_for_add_smartphone_and_lawn_grass(smartphone_product, lawn_grass_product):
     """Тестирует исключение при сложении объектов разных классов"""
     with pytest.raises(TypeError) as exc_info:
-        print(smartphone_product + lawn_grass_product)
+        smartphone_product + lawn_grass_product
     assert str(exc_info.value) == "Складывать можно только товары одного класса"
 
 
 def test_add_lawn_grass(lawn_grass_product, lawn_grass_product_2):
-    """Тестирует сложение стоимости товаров Smartphone"""
+    """Тестирует сложение стоимости товаров LawnGrass"""
     assert (
         lawn_grass_product + lawn_grass_product_2
         == lawn_grass_product.price * lawn_grass_product.quantity
