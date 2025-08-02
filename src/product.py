@@ -158,10 +158,10 @@ class Product(MixinLog, BaseProduct):
         Исключения:
             TypeError: Если other не является Product
         """
-        if isinstance(other, Product):
+        if type(other) == self.__class__:
             return self.__price * self.quantity + other.__price * other.quantity
-        else:
-            raise TypeError("Можно суммировать только объекты класса Product или его наследников")
+
+        raise TypeError("Складывать можно только товары одного класса")
 
     @property
     def price(self):
@@ -234,26 +234,6 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
-    def __add__(self, other):
-        """Складывает общую стоимость (цена × количество) двух смартфонов.
-
-        Args:
-            other (Smartphone): Другой смартфон для сложения
-
-        Returns:
-            float: Суммарная стоимость товаров
-
-        Raises:
-            TypeError: Если other не является объектом Smartphone
-
-        Примечание:
-            Защищает от сложения с объектами других классов
-        """
-        if type(other) is self.__class__:
-            return self.price * self.quantity + other.price * other.quantity
-
-        raise TypeError("Складывать можно только товары одного класса")
-
 
 class LawnGrass(Product):
     """Класс для представления газонной травы в магазине.
@@ -295,26 +275,3 @@ class LawnGrass(Product):
         self.country = country  # Устанавливаем страну-производителя
         self.germination_period = germination_period  # Срок до первых всходов
         self.color = color  # Цвет травяного покрова
-
-    def __add__(self, other):
-        """Складывает общую стоимость (цена × количество) двух упаковок травы.
-
-        Args:
-            other (LawnGrass): Другая упаковка газонной травы для сложения
-
-        Returns:
-            float: Суммарная стоимость товаров
-
-        Raises:
-            TypeError: Если other не является объектом LawnGrass
-
-        Пример:
-            grass1 + grass2  # Сумма стоимости двух упаковок травы
-
-        Примечание:
-            Защищает от сложения с объектами других классов товаров
-        """
-        if type(other) is self.__class__:
-            return self.price * self.quantity + other.price * other.quantity
-
-        raise TypeError("Складывать можно только товары одного класса")

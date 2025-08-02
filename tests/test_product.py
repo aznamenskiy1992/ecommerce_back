@@ -80,8 +80,8 @@ def test_sum_products(samsung_product, iphone_product, capsys):
 def test_other_is_not_product_object(samsung_product):
     """Тестирует кейс, когда 2-ой аргумент для суммы не экземпляр класса Product"""
     with pytest.raises(TypeError) as exc_info:
-        print(samsung_product + 25000)
-    assert str(exc_info.value) == "Можно суммировать только объекты класса Product или его наследников"
+        samsung_product + 25000
+    assert str(exc_info.value) == "Складывать можно только товары одного класса"
 
 
 def test_init_smartphone_class(smartphone_product):
