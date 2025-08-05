@@ -14,13 +14,10 @@ def test_add_product_in_category(smartphone_category, tv_product):
     """Тестирует добавление товара в список товаров категории"""
     smartphone_category.add_product(tv_product)
 
-    assert (
-        smartphone_category.products.strip()
-        == (
-            'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n'
-            'Iphone 15, 210000.0 руб. Остаток: 8 шт.\n'
-            '55" QLED 4K, 123000.0 руб. Остаток: 7 шт.'
-        )
+    assert smartphone_category.products.strip() == (
+        "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
+        "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
+        '55" QLED 4K, 123000.0 руб. Остаток: 7 шт.'
     )
 
 
