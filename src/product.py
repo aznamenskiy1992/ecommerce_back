@@ -1,4 +1,83 @@
-class Product:
+from abc import ABC, abstractmethod
+
+from src.mixin import MixinLog
+
+
+class BaseProduct(ABC):
+    """Абстрактный базовый класс, определяющий интерфейс для всех товаров.
+
+    Задает обязательные методы, которые должны быть реализованы в дочерних классах.
+    Использует абстрактные методы для обеспечения единого интерфейса товаров.
+
+    Обязательные методы:
+        __init__: Инициализация товара
+        __str__: Строковое представление
+        __add__: Сложение товаров
+        new_product: Альтернативный конструктор
+
+    Пример использования:
+        class ConcreteProduct(BaseProduct):
+            ...  # реализация всех абстрактных методов
+    """
+
+    @abstractmethod
+    def __init__(self, *args, **kwargs):
+        """Абстрактный метод инициализации товара.
+
+        Args:
+            *args: Позиционные аргументы
+            **kwargs: Именованные аргументы
+
+        Примечание:
+            Должен быть реализован в дочерних классах
+        """
+        pass
+
+    @abstractmethod
+    def __str__(self):
+        """Абстрактный метод строкового представления товара.
+
+        Returns:
+            str: Информация о товаре в читаемом формате
+
+        Примечание:
+            Реализация должна возвращать строку с основными характеристиками
+        """
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        """Абстрактный метод сложения товаров.
+
+        Args:
+            other: Другой товар для сложения
+
+        Returns:
+            Числовой результат сложения стоимостей
+
+        Примечание:
+            Реализация должна учитывать типы товаров при сложении
+        """
+        pass
+
+    @classmethod
+    @abstractmethod
+    def new_product(cls, product_data):
+        """Абстрактный фабричный метод создания товара.
+
+        Args:
+            product_data: Данные для создания товара (обычно dict)
+
+        Returns:
+            Экземпляр класса товара
+
+        Примечание:
+            Альтернативный конструктор для создания из словаря данных
+        """
+        pass
+
+
+class Product(MixinLog, BaseProduct):
     """Класс для представления товара в магазине.
 
     Атрибуты:
@@ -57,6 +136,7 @@ class Product:
         self.description = description
         self.__price = price  # Устанавливаем через приватный атрибут
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self):
         """Возвращает строковое представление товара.
@@ -78,10 +158,10 @@ class Product:
         Исключения:
             TypeError: Если other не является Product
         """
-        if isinstance(other, Product):
+        if type(other) is self.__class__:
             return self.__price * self.quantity + other.__price * other.quantity
-        else:
-            raise TypeError("Можно суммировать только объекты класса Product или его наследников")
+
+        raise TypeError("Складывать можно только товары одного класса")
 
     @property
     def price(self):
@@ -154,26 +234,6 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
-    def __add__(self, other):
-        """Складывает общую стоимость (цена × количество) двух смартфонов.
-
-        Args:
-            other (Smartphone): Другой смартфон для сложения
-
-        Returns:
-            float: Суммарная стоимость товаров
-
-        Raises:
-            TypeError: Если other не является объектом Smartphone
-
-        Примечание:
-            Защищает от сложения с объектами других классов
-        """
-        if type(other) is self.__class__:
-            return self.price * self.quantity + other.price * other.quantity
-
-        raise TypeError("Складывать можно только товары одного класса")
-
 
 class LawnGrass(Product):
     """Класс для представления газонной травы в магазине.
@@ -215,26 +275,3 @@ class LawnGrass(Product):
         self.country = country  # Устанавливаем страну-производителя
         self.germination_period = germination_period  # Срок до первых всходов
         self.color = color  # Цвет травяного покрова
-
-    def __add__(self, other):
-        """Складывает общую стоимость (цена × количество) двух упаковок травы.
-
-        Args:
-            other (LawnGrass): Другая упаковка газонной травы для сложения
-
-        Returns:
-            float: Суммарная стоимость товаров
-
-        Raises:
-            TypeError: Если other не является объектом LawnGrass
-
-        Пример:
-            grass1 + grass2  # Сумма стоимости двух упаковок травы
-
-        Примечание:
-            Защищает от сложения с объектами других классов товаров
-        """
-        if type(other) is self.__class__:
-            return self.price * self.quantity + other.price * other.quantity
-
-        raise TypeError("Складывать можно только товары одного класса")
