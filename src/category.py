@@ -98,3 +98,11 @@ class Category:
             products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
 
         return products_str
+
+    def middle_price(self):
+        """Возвращает среднее значение всех товаров в категории"""
+        sum_products = 0
+        for product in self.__products:
+            sum_products += product.price
+
+        return sum_products / len(self.__products)

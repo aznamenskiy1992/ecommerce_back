@@ -67,3 +67,13 @@ def lawn_grass_product():
 def lawn_grass_product_2():
     """Фикстура создаёт продукт Трава газонная"""
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def full_category(smartphone_product, lawn_grass_product):
+    """Фикстура создаёт категорию с товарами"""
+    return Category(
+        "Заполненная категория",
+        "Описание",
+        [smartphone_product, lawn_grass_product]
+    )
