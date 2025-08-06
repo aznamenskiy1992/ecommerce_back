@@ -43,3 +43,17 @@ def test_print_quantity_by_category(smartphone_category, capsys):
     captured = capsys.readouterr()
 
     assert captured.out == f"{smartphone_category.name}, количество продуктов: 13 шт."
+
+
+def test_avg_price_in_category(full_category):
+    """Тестирует возврат средней стоимости всех товаров в категории"""
+    result = full_category.middle_price()
+
+    assert result == 90250.0
+
+
+def test_avg_price_in_empty_category(empty_category):
+    """Тестирует возврат 0, если категория пустая"""
+    result = empty_category.middle_price()
+
+    assert result == 0
