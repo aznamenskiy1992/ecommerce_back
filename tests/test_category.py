@@ -50,3 +50,10 @@ def test_avg_price_in_category(full_category):
     result = full_category.middle_price()
 
     assert result == 90250.0
+
+
+def test_avg_price_in_empty_category(empty_category):
+    """Тестирует возврат 0, если категория пустая"""
+    result = empty_category.middle_price()
+
+    assert result == 0

@@ -77,3 +77,13 @@ def full_category(smartphone_product, lawn_grass_product):
         "Описание",
         [smartphone_product, lawn_grass_product]
     )
+
+
+@pytest.fixture
+def empty_category():
+    """Фикстура создаёт категорию без товаров"""
+    return Category(
+        "Заполненная категория",
+        "Описание",
+        []
+    )
