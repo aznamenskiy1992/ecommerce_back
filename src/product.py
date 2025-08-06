@@ -133,7 +133,7 @@ class Product(MixinLog, BaseProduct):
             Цена хранится в приватном атрибуте __price для контроля валидности
         """
         if quantity == 0:
-            raise ValueError('Товар с нулевым количеством не может быть добавлен')
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
 
         self.name = name
         self.description = description
