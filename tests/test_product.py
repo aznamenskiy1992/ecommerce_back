@@ -1,6 +1,6 @@
 import pytest
 
-from src.product import Product
+from src.product import Product, Smartphone
 
 
 def test_init_product(samsung_product, iphone_product):
@@ -122,3 +122,11 @@ def test_add_lawn_grass(lawn_grass_product, lawn_grass_product_2):
         == lawn_grass_product.price * lawn_grass_product.quantity
         + lawn_grass_product_2.price * lawn_grass_product_2.quantity
     )
+
+
+def test_error_in_init_product_with_count_0():
+    """Тестирует ошибку при попытке создать товар с кол-вом 0"""
+    with pytest.raises(ValueError, match='Товар с нулевым количеством не может быть добавлен'):
+        Smartphone(
+            "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 0, 95.5, "S23 Ultra", 256, "Серый"
+        )
